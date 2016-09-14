@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.xuie.flowviewpager.util.DimenUtils;
 
@@ -20,7 +21,6 @@ public class FlowFragmentPagerAdapter extends FragmentPagerAdapter implements Vi
 
     private int widthPadding = DimenUtils.dp2px(24);
     private int heightPadding = DimenUtils.dp2px(32);
-    private int lastPosition = 0;
 
     public FlowFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -64,12 +64,16 @@ public class FlowFragmentPagerAdapter extends FragmentPagerAdapter implements Vi
     }
 
     @Override public void onPageSelected(int position) {
-        if (lastPosition <= position && position < fragments.size() - 1) {
-            fragments.get(position + 1).getView().setPadding(widthPadding, heightPadding, widthPadding, heightPadding);
+        if (position < fragments.size() - 1) {
+            View nextView = fragments.get(position + 1).getView();
+            if (nextView.getPaddingLeft() == 0)
+                nextView.setPadding(widthPadding, heightPadding, widthPadding, heightPadding);
         }
 
-        if (position > lastPosition) {
-            lastPosition = position;
+        if (position > 0) {
+            View preView = fragments.get(position - 1).getView();
+            if (preView.getPaddingLeft() == 0)
+                preView.setPadding(widthPadding, heightPadding, widthPadding, heightPadding);
         }
 
         if (mOnPageChangeListeners != null) {

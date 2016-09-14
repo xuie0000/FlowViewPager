@@ -5,12 +5,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.RelativeLayout;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private RelativeLayout root;
+    private View root;
     private ViewPager viewPager;
 
     private int[] imageIds = {R.mipmap.p1, R.mipmap.p2, R.mipmap.p3, R.mipmap.p5, R.mipmap.p6};
@@ -20,10 +19,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        root = (RelativeLayout) findViewById(R.id.root);
+        root = findViewById(R.id.root);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
 
         FlowFragmentPagerAdapter flowFragmentPagerAdapter = new FlowFragmentPagerAdapter(getSupportFragmentManager());
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
+        flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
         flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
         flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
         flowFragmentPagerAdapter.addFragment(MainFragment.newInstance(imageIds[random.nextInt(5)]));
